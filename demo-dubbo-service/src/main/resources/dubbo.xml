@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd 
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context.xsd 
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop.xsd 
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx.xsd 
+						http://code.alibabatech.com/schema/dubbo 
+						http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	
+	
+	<context:component-scan base-package="yzh.sty.dubbo.service" />
+	
+	<!-- Dubbo开始 消费者不要跟服务者名称一致 -->
+	<dubbo:application name="demoDubboServer" />
+	
+	<!-- 集群 测试 -->
+	<!-- 同一集群内的多个地址用逗号分隔，如：ip:port,ip:port，不同集群的注册中心，请配置多个<dubbo:registry>标签 -->
+	<!-- <dubbo:registry id="zookeeper1" address="zookeeper://127.0.0.1:2181" 
+		/> -->
+	<!-- <dubbo:registry id="zookeeper1" address="zookeeper://192.163.10.231:2181" /> -->
+	
+	<dubbo:registry id="zookeeper" address="zookeeper://127.0.0.1:2181" check="false" subscribe="false"></dubbo:registry>
+	
+	<!-- dubbo暴露地址 -->
+	<dubbo:protocol name="dubbo" port="20880" />
+	
+	
+	<!-- 全部变量设置 -->
+	<dubbo:service interface="yzh.sty.dubbo.service.DemoProviderService" version="1.0" ref="demoProviderService" />
+	
+
+</beans>
