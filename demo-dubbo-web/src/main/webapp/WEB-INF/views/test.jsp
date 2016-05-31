@@ -6,6 +6,6 @@
 <title>跳转成功</title>
 </head>
 <body>
-恭喜你${a}，跳转成功${a }
+恭喜你${a}，跳转成功${a}
 </body>
 </html>

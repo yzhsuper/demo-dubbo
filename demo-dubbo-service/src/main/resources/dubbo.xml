@@ -29,7 +29,7 @@
 	<dubbo:registry id="zookeeper" address="zookeeper://127.0.0.1:2181" check="false" subscribe="false"></dubbo:registry>
 	
 	<!-- dubbo暴露地址 -->
-	<dubbo:protocol name="dubbo" port="20880" />
+	<dubbo:protocol name="dubbo" port="-1" />
 	
 	
 	<!-- 全部变量设置 -->
