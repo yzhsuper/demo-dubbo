@@ -5,9 +5,10 @@
 *.war
 *.ear
 /target
-/.settings
-/.classpath
-/.project
+**/.settings
+**/.classpath
+**/.project
 .settings
 .classpath
 .project
+**/*.class
